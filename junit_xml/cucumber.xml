@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="3" time="66.670263">
+    <testcase classname="Customers" name="Add new Customer" time="28.920546">
+        <system-out><![CDATA[Given User Launch Chrome browser............................................passed
+When User opens URL "http://admin-demo.nopcommerce.com/login"...............passed
+And User enters Email as "admin@yourstore.com" and Password as "admin"......passed
+And Click on Login..........................................................passed
+Then User can view Dashboad.................................................passed
+When User click on customers Menu...........................................passed
+And click on customers Menu Item............................................passed
+And click on Add new button.................................................passed
+Then User can view Add new customer page....................................passed
+When User enter customer info...............................................passed
+And click on Save button....................................................passed
+Then User can view confirmation message "The new customer has been added successfully.".passed
+And close browser...........................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Customers" name="Search Customer by EMailID" time="19.025946">
+        <system-out><![CDATA[Given User Launch Chrome browser............................................passed
+When User opens URL "http://admin-demo.nopcommerce.com/login"...............passed
+And User enters Email as "admin@yourstore.com" and Password as "admin"......passed
+And Click on Login..........................................................passed
+Then User can view Dashboad.................................................passed
+When User click on customers Menu...........................................passed
+And click on customers Menu Item............................................passed
+And Enter customer EMail....................................................passed
+When Click on search button.................................................passed
+Then User should found Email in the Search table............................passed
+And close browser...........................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="Customers" name="Search Customer by Name" time="18.723771">
+        <system-out><![CDATA[Given User Launch Chrome browser............................................passed
+When User opens URL "http://admin-demo.nopcommerce.com/login"...............passed
+And User enters Email as "admin@yourstore.com" and Password as "admin"......passed
+And Click on Login..........................................................passed
+Then User can view Dashboad.................................................passed
+When User click on customers Menu...........................................passed
+And click on customers Menu Item............................................passed
+And Enter customer FirstName................................................passed
+And Enter customer LastName.................................................passed
+When Click on search button.................................................passed
+Then User should found Name in the Search table.............................passed
+And close browser...........................................................passed
+]]></system-out>
+    </testcase>
+</testsuite>
