@@ -1,1 +1,14 @@
-C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\BDDProect\BDDProect\AppTest.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\command_providers\ElementAssertions.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\command_providers\WaitFor.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\PageObject\CustomerPage.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\StepDefinations\Step.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\PageObject\LoginPage.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\StepDefinations\Hooks.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\command_providers\ActOn.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\command_providers\AssertThat.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\Utilites\LoadConfigFiles.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\command_providers\BrowserActions.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\command_providers\ElementActions.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\testrunner\TestRunner.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\PageObject\SearchCustomer.java
+C:\Users\alimu\eclipse-workspace\BDDProect\src\test\java\Utilites\ReadConfigFiles.java

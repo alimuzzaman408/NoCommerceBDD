@@ -1,54 +1,65 @@
 package PageObject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import command_providers.ActOn;
 
-public class LoginPage {
-	
-	public WebDriver ldriver;
+public class LoginPage {	
+	public WebDriver driver;
 
-	public LoginPage(WebDriver rdriver) {
-		ldriver = rdriver;
-		PageFactory.initElements(rdriver, this);
-	}
-	
-	@FindBy(id = "Email")
-	@CacheLookup
-	WebElement txtEmail;
+	private static final Logger LOGGER = LogManager.getLogger(LoginPage.class);
 
-	@FindBy(id = "Password")
-	@CacheLookup
-	WebElement txtPassword;
+	private static final By textmail=By.xpath("//*[@id='Email']");	
+	private static final By error=By.xpath("//li[normalize-space()='The credentials provided are incorrect']");
+	private static final By txtPassword=By.xpath("//*[@id='Password']");
+	private static final By btnLogin=By.xpath("//button[normalize-space()='Log in']");
+	private static final By lnkLogout=By.xpath("//a[normalize-space()='Logout']");
 
-	@FindBy(xpath = "//input[@value='Log in']")
-	@CacheLookup
-	WebElement btnLogin;
-
-	@FindBy(linkText = "Logout")
-	@CacheLookup
-	WebElement lnkLogout;
-	
-	
-	public void setUserName(String uname) {
-		txtEmail.clear();
-		txtEmail.sendKeys(uname);
-
+	public LoginPage(WebDriver driver) {
+		this.driver = driver;		
 	}
 
-	public void setPassword(String pwd) {
-		txtPassword.clear();
-		txtPassword.sendKeys(pwd);
+	public LoginPage setUserName(String uname) {
+		ActOn.wait(driver, textmail);
+		ActOn.element(driver, textmail).setValue(uname);
+		LOGGER.info("usenname entered");
+		return this;	
 	}
 
-	public void clickLogin() {
-		btnLogin.click();
+	public LoginPage setPassword(String pwd) {
+		ActOn.wait(driver, txtPassword);
+		ActOn.element(driver, txtPassword).setValue(pwd);
+		return this;
 	}
 
-	public void clickLogout() {
-		lnkLogout.click();
+	public LoginPage clickLogin() throws InterruptedException {
+		ActOn.wait(driver, btnLogin);
+		ActOn.element(driver, btnLogin).click();		
+		return this;
 	}
 
+	public LoginPage verifyPageTitle(String title) {
+		ActOn.browser(driver).validateTitle(title);
+		LOGGER.info("************* Login Passed *****************");
+		return this;
+	}
+
+	public LoginPage clickLogout() {
+		ActOn.wait(driver, lnkLogout);
+		ActOn.element(driver, lnkLogout).click();
+		return this;
+	}
+
+	public LoginPage invalidLogin() {		
+		ActOn.wait(driver, error);
+		String value=ActOn.element(driver, error).getTextValue();
+		if(value.contains("The credentials provided are incorrect")){
+			LOGGER.info("Test is passed");			
+		}else {
+			LOGGER.info("Test is failed");			
+		}		
+		return this;
+	}
 }

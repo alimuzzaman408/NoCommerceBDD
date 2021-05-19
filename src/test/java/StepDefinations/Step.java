@@ -1,83 +1,56 @@
 package StepDefinations;
 
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import PageObject.CustomerPage;
+import org.openqa.selenium.WebDriver;
 import PageObject.LoginPage;
-import PageObject.SearchCustomer;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.log4j.Level;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
-public class Step extends Base{
-	
-	@Before
-	public void setup() throws IOException
-	{
-		//Logging
-		logger=Logger.getLogger("BDDProject");
-		PropertyConfigurator.configure("Log4j.properties");
-		logger.setLevel(Level.DEBUG);
-		
-		//Load properties file
-		configProp= new Properties();
-		FileInputStream configPropfile = new FileInputStream("config.properties");
-		configProp.load(configPropfile);
-		
-		String br=configProp.getProperty("browser"); //getting the browser name from config.properties file
-		
-		//Launching browser
-		if (br.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-		}
+public class Step {	
 
-		else if (br.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-		}
-			
-	}
-	
-	@Given("User Launch Chrome browser")
-	public void user_Launch_Chrome_browser() {
-		logger.info("************* Launching Browser *****************");
-		lp=new LoginPage(driver);
-	}
+	WebDriver driver=Hooks.driver;
 
 	@When("User opens URL {string}")
-	public void user_opens_URL(String url) {
-		logger.info("************* Opening URL  *****************");
+	public void user_opens_url(String url) {
 		driver.get(url);
 		driver.manage().window().maximize();
-	    
 	}
 
 	@When("User enters Email as {string} and Password as {string}")
-	public void user_enters_Email_as_and_Password_as(String user, String pass) {
-		lp.setUserName(user);
-		lp.setPassword(pass);
-	    
+	public void user_enters_email_as_and_password_as(String user, String pass) {
+		new LoginPage(driver)
+		.setUserName(user)
+		.setPassword(pass);
 	}
 
 	@When("Click on Login")
-	public void click_on_Login() {
-		logger.info("************* click on login *****************");
-		lp.clickLogin();
-	    
+	public void click_on_login() throws InterruptedException {
+		new LoginPage(driver)
+		.clickLogin();	   
 	}
 
 	@Then("Page Title should be {string}")
+	public void page_title_should_be(String title) {	
+		new LoginPage(driver)
+		.verifyPageTitle(title);	    
+	}
+
+	@When("User click on Log out link")
+	public void user_click_on_log_out_link() {
+		new LoginPage(driver).clickLogout();	   
+	}
+	
+	@Then("Login in failed")
+	public void failedLogin() {
+		new LoginPage(driver).invalidLogin();
+		
+			   
+	}
+	
+
+
+
+
+	/*@Then("^Page Title should be {string}$")
 	public void page_Title_should_be(String title) throws InterruptedException {
 		if(driver.getPageSource().contains("Login was unsuccessful"))
 		{
@@ -98,10 +71,10 @@ public class Step extends Base{
 		logger.info("************* clciking on logout *****************");
 		lp.clickLogout();
 		Thread.sleep(3000);
-	    
+
 	}
-	
-	
+
+
 	@Then("User can view Dashboad")
 	public void user_can_view_Dashboad() {
 		addCust=new CustomerPage(driver);
@@ -188,13 +161,8 @@ public class Step extends Base{
 	}
 
 
-	@Then("close browser")
-	public void close_browser() {
-		logger.info("************* closing browser *****************");
-		driver.quit();
-	    
-	}
-	
+
+
 	@When("Enter customer FirstName")
 	public void enter_customer_FirstName() {
 		logger.info("********* Searching customer details by Name **************");
@@ -211,6 +179,8 @@ public class Step extends Base{
 	public void user_should_found_Name_in_the_Search_table() {
 		boolean status=searchcust.searchCustomerByName("Victoria Terces");
 		Assert.assertEquals(true, status);
-	  
-	}
+
+	}*/
+
+
 }

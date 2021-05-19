@@ -1,23 +1,21 @@
 package testrunner;
 
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
-
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(		
-		features={"Feature/AddCustomer.feature"},
+		features={"Feature/Login.feature"},
 		glue={"StepDefinations"	},
 		dryRun=false,
 		monochrome=true,
-		plugin= {"pretty","html:test-output","json:json_output/cucumber.json","junit:junit_xml/cucumber.xml"}
-	
+		publish=true,	
+	    plugin = {"pretty","summary", "json:target/cucumber.json","html:target/CucumberReports/reports.html"},
+	    tags= "@PositiveTesting or @NegativeScenerio or @PositiveScenerio"
 		
 
 		)
 
-
 public class TestRunner {
-
 }
