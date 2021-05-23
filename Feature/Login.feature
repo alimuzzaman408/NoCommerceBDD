@@ -1,6 +1,6 @@
 Feature: Login feature testing in application
 Background:
-When User opens URL "http://admin-demo.nopcommerce.com/login" 
+    When User opens URL  
 
 @PositiveTesting
 Scenario: Successful Login with Valid Credentials 	
@@ -19,7 +19,7 @@ Scenario Outline: Login with valid Data Driven Testing
 	Then Page Title should be "Your store. Login" 
 	
 	Examples: 
-		| email | password |
+		| email                 | password|
 		| admin@yourstore.com	|	admin |
 		| admin@yourstore.com	|	admin |	
 		| admin@yourstore.com	|	admin |
@@ -34,7 +34,7 @@ Scenario Outline: Login with invalid Data Driven Testing
 		| email | password |
 		| admin@yourstore.com	|	admin1 |
 		| admin@yourstore.com	|	admin2 |	
-		| admin@yourstore.com	|	admin3 |
+		| admin@yourstore.com	|	admin3|
 		| admin@yourstore.com	|	admin4 |		
 		
 		

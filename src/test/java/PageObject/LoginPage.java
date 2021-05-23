@@ -53,7 +53,7 @@ public class LoginPage {
 	}
 
 	public LoginPage invalidLogin() {		
-		ActOn.wait(driver, error);
+		ActOn.wait(driver, error).waitForElementToBeVisible();
 		String value=ActOn.element(driver, error).getTextValue();
 		if(value.contains("The credentials provided are incorrect")){
 			LOGGER.info("Test is passed");			
