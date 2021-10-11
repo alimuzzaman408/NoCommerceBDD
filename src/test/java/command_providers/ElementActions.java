@@ -2,14 +2,13 @@ package command_providers;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+
 
 public class ElementActions {
 	private By locator;
@@ -51,28 +50,21 @@ public class ElementActions {
         return this;
     }
     
-    
-    
-
     public String getTextValue() {
         return getElement().getText();
     }
-    
-    
-
+   
     public List<WebElement> getElements() {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         List<WebElement> element = null;
         try{
             element = driver.findElements(locator);
-
         } catch (Exception e) {
             LOGGER.error("Element Exception for the locator " + locator + " and exception is: " + e);
         }
         return element;
     }
     
-
     public ElementActions getrow() {
         getElements().size();
         return this;
@@ -81,10 +73,5 @@ public class ElementActions {
     public ElementActions getrcolm() {
         getElements().size();
         return this;
-    }
-    
-    
-    
-    
-    
+    }   
 }

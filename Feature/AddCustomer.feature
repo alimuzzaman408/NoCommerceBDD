@@ -7,7 +7,7 @@ Background:
 	When User click on customers Menu 
 	And click on customers Menu Item 
 	
-@regression
+@PositiveTesting
 Scenario: Add new Customer 
 	And click on Add new button 
 	Then User can view Add new customer page 
@@ -15,15 +15,13 @@ Scenario: Add new Customer
 	And click on Save button 
 	Then User can view confirmation message "The new customer has been added successfully." 
 	
-
-
+@PositiveTesting
 Scenario: Search Customer by EMailID 
 	And Enter customer EMail
 	When Click on search button
 	Then User should found Email in the Search table
-	
-	
-
+		
+@PositiveTesting
 Scenario: Search Customer by Name 
 	And Enter customer FirstName
 	And Enter customer LastName

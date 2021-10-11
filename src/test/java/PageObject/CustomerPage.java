@@ -170,6 +170,7 @@ public class CustomerPage {
 	public CustomerPage clickOnSave()
 	{
 		ActOn.element(driver, btnSave).click();
+		LOGGER.info("Save button is clicked");
 		return this;
 	}
 }

@@ -12,11 +12,10 @@ import org.junit.runner.RunWith;
 		dryRun=false,
 		monochrome=true,
 		publish=true,	
-		plugin = {"pretty","summary", "json:target/cucumber.json","html:target/CucumberReports/reports.html"}
-		//tags= "@PositiveScenerio or @NegativeScenerio or @PositiveTesting"
-		//tags="@regression"
-		
+		plugin = {"pretty","summary", "json:target/cucumber.json","html:target/CucumberReports/reports.html"},
+		tags= "@PositiveScenerio or @NegativeScenerio or @PositiveTesting"		
 		)
 
 public class TestRunner {
+	
 }
