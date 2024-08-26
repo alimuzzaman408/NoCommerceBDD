@@ -1,6 +1,6 @@
 Feature: Customers 
 Background: 
-    When User opens URL 
+  When User opens URL 
 	And User enters Email as "admin@yourstore.com" and Password as "admin" 
 	And Click on Login 
 	Then User can view Dashboad 
